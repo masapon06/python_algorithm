@@ -22,5 +22,23 @@ for i in range(N):
     v.append(item[0])
     w.append(item[1])
 
-# def sac(i, n):
-#     print(i, n)
+dp = [[-1]*(Weight+1) for j in range(N+1)]
+
+def search(i, j):
+    if dp[i][j] != -1:
+        return dp[i][j]
+    res = 0
+    if i == N:
+        res = 0
+    elif w[i] > j:
+        res = search(i+1, j)
+    else:
+        res = max(
+            search(i+1, j - w[i]) + v[i],
+            search(i+1, j)
+        )
+    dp[i][j] = res
+    return dp[i][j]
+
+print(search(0, Weight))
+# print(dp)

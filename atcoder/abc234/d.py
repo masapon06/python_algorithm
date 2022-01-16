@@ -23,3 +23,5 @@ for i in range(k-1, n):
     s_arr.insert(index, arr[i])
     print(s_arr[-k])
 # ====================TLE====================
+
+
